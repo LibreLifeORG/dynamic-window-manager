@@ -1,0 +1,17 @@
+@@ -1410,6 +1523,16 @@
+ void
+ quit(const Arg *arg)
+ {
++	// fix: reloading dwm keeps all the hidden clients hidden
++	Monitor *m;
++	Client *c;
++	for (m = mons; m; m = m->next) {
++		if (m) {
++			for (c = m->stack; c; c = c->next)
++				if (c && HIDDEN(c)) showwin(c);
++		}
++	}
++
+ 	running = 0;
+ }
+ 
