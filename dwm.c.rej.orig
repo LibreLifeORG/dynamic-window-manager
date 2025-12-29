@@ -1,17 +1,19 @@
-@@ -1410,6 +1523,16 @@
- void
- quit(const Arg *arg)
- {
-+	// fix: reloading dwm keeps all the hidden clients hidden
-+	Monitor *m;
-+	Client *c;
-+	for (m = mons; m; m = m->next) {
-+		if (m) {
-+			for (c = m->stack; c; c = c->next)
-+				if (c && HIDDEN(c)) showwin(c);
-+		}
+@@ -1695,8 +1700,16 @@
+ 		return;
+ 	selmon->sel->isfloating = !selmon->sel->isfloating || selmon->sel->isfixed;
+ 	if(selmon->sel->isfloating)
+-		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
+-		       selmon->sel->w, selmon->sel->h, False);
++		/*restore last known float dimensions*/
++		resize(selmon->sel, selmon->sel->sfx, selmon->sel->sfy,
++		       selmon->sel->sfw, selmon->sel->sfh, False);
++	else {
++		/*save last known float dimensions*/
++		selmon->sel->sfx = selmon->sel->x;
++		selmon->sel->sfy = selmon->sel->y;
++		selmon->sel->sfw = selmon->sel->w;
++		selmon->sel->sfh = selmon->sel->h;
 +	}
-+
- 	running = 0;
+ 	arrange(selmon);
  }
  
