@@ -23,6 +23,7 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
 	"st", NULL,
 	"dunst", NULL,
+	"gentoo-pipewire-launcher", NULL,
 	"dwmblocks", NULL,
 	NULL /* terminate */
 };
@@ -81,7 +82,7 @@ static const char *tor[]  = { "tor-browser", NULL };
 static const char *email[]  = { "thunderbird", NULL };
 static const char *rss[]  = { "liferea", NULL };
 static const char *music[]  = { "strawberry", NULL };
-static const char *fileman[]  = { "caja", NULL };
+static const char *fileman[]  = { "thunar", NULL };
 static const char *volup[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ +5%", NULL };
 static const char *voldown[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ -5%", NULL };
 
