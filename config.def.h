@@ -84,10 +84,11 @@ static const char *wincap[]  = { "wincap", NULL };
 static const char *screencap[]  = { "screencap", NULL };
 static const char *browser[]  = { "librewolf-bin", NULL };
 static const char *tor[]  = { "tor-browser", NULL };
-static const char *email[]  = { "thunderbird", NULL };
+static const char *email[]  = { "thunderbird-bin", NULL };
 static const char *rss[]  = { "liferea", NULL };
 static const char *music[]  = { "strawberry", NULL };
-static const char *fileman[]  = { "thunar", NULL };
+/*static const char *fileman[]  = { "thunar", NULL };*/
+static const char *fileman[]  = { "st", "ranger", NULL };
 static const char *volup[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ +5%", NULL };
 static const char *voldown[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ -5%", NULL };
 
