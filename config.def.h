@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -90,6 +91,9 @@ static const char *music[]  = { "strawberry", NULL };
 static const char *fileman[]  = { "st", "ranger", NULL };
 static const char *volup[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ +5%", NULL };
 static const char *voldown[] = { "sh", "-c", "pactl set-sink-volume @DEFAULT_SINK@ -5%", NULL };
+static const char *volup_key[]   = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+", NULL };
+static const char *voldown_key[] = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%-", NULL };
+static const char *volmute[] = { "wpctl", "set-mute",   "@DEFAULT_AUDIO_SINK@", "toggle", NULL };
 
 
 static const Key keys[] = {
@@ -113,6 +117,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_i,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ 0, XF86XK_AudioRaiseVolume,              spawn,          {.v = volup_key } },
+	{ 0, XF86XK_AudioLowerVolume, 		   spawn, 	   {.v = voldown_key } },
+	{ 0, XF86XK_AudioMute,        		   spawn, 	   {.v = volmute } },
 	/*{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },*/
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
